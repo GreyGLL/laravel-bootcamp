@@ -15,19 +15,27 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('posts', 'PostsController@index');
+Route::get('posts', 'PostsController@index')->name('posts.index');
 
-Route::get('form', 'PostsController@create');
+Route::get('form', 'PostsController@create')->name('posts.create');
 
-Route::post('form', 'PostsController@store');
+Route::post('form', 'PostsController@store')->name('posts.store');
 
-Route::get('post/{id}', 'PostsController@show');
+Route::get('post/{id}', 'PostsController@show')->name('posts.show');
 
-Route::get('form/{id}/edit', 'PostsController@edit');
+Route::get('form/{id}/edit', 'PostsController@edit')->name('posts.edit');
 
-Route::post('post/{id}', 'PostsController@update');
+Route::post('post/{id}', 'PostsController@update')->name('posts.update');
 
-Route::get('delete/{id}', 'PostsController@destroy');
+Route::get('delete/{id}', 'PostsController@destroy')->name('posts.destroy');
 
-Route::get('posts/{category_id}', 'PostsController@list');
+Route::get('posts/{category_id}', 'PostsController@list')->name('posts.list');
+
+Route::get('categories', 'CategoriesController@index')->name('categories.index');
+
+Route::get('categories/{id}/edit','CategoriesController@edit')->name('categories.edit');
+
+Route::post('categories/{id}','CategoriesController@update')->name('categories.update');
+
+
 

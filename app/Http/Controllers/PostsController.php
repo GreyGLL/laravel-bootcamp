@@ -72,7 +72,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $title;
         $post->body = $body ;
-        $post->category_id = 3;
+        $post->category_id = $request->Categories;
         $post->save();
         return "Post modificado!";
     }

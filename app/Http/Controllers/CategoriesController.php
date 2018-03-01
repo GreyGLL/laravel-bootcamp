@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categories = category::all();
+
+        return view('categories.index')->with('categories',$categories);
     }
 
     /**
@@ -56,7 +59,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::find($id); // Guarda objeto con todas las propiedades de un id en particular
+        return view('categories.edit')->with('categories',$categories); // Introducir variables que vas a utlizar dentro de la vista
     }
 
     /**
@@ -68,7 +72,11 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $title = $request->title;
+        $category = Category::find($id);
+        $category->title = $title;
+        $category->save();
+        return "Categoria modificada!";
     }
 
     /**
