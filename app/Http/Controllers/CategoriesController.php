@@ -26,7 +26,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $title = $request->title;
+        $category = new Category;
+        $category->title = $title;
+        $category->save();
+        return "Categoria guardada!";
     }
 
     /**
@@ -87,6 +91,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+        return "Categoria eliminada!";
     }
 }

@@ -35,7 +35,10 @@ Route::get('categories', 'CategoriesController@index')->name('categories.index')
 
 Route::get('categories/{id}/edit','CategoriesController@edit')->name('categories.edit');
 
-Route::post('categories/{id}','CategoriesController@update')->name('categories.update');
+Route::get('categories/create','CategoriesController@create')->name('categories.create');
 
+Route::post('categories/store','CategoriesController@store')->name('categories.store');
+
+Route::get('categories/{id}/destroy','CategoriesController@destroy')->name('categories.destroy');
 
 
