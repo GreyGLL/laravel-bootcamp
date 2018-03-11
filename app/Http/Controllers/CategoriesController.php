@@ -95,4 +95,11 @@ class CategoriesController extends Controller
         $category->delete();
         return "Categoria eliminada!";
     }
+
+    public function list() {
+
+        $category = Category::all();
+        return view('categories.list')->with('categories',$category);
+
+    }
 }
