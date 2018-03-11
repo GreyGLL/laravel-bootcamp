@@ -6,11 +6,15 @@ use Illuminate\Http\Request;
 use DB;
 use App\Post;
 use App\Category;
+use Auth;
 
 class PostsController extends Controller
 {
     public function index(Request $request) {
-        $posts = Post::select('*');
+
+        //if (Auth::check()) {
+
+            $posts = Post::select('*');
         if ($request->category != null) {
             $post=$posts->where('category_id',$request->category);
         }
@@ -23,6 +27,11 @@ class PostsController extends Controller
 
         return view('index')
                 ->with(["posts"=>$posts,"categories"=>$categories]);
+
+       //}  else {
+
+           // return redirect()->route('login');
+       // }  
     }
 
     public function list($category_id) {
