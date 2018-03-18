@@ -98,7 +98,7 @@ class CategoriesController extends Controller
 
     public function list() {
 
-        $category = Category::all();
+        $category = Category::orderBy('id','desc')->get();
         return view('categories.list')->with('categories',$category);
 
     }
